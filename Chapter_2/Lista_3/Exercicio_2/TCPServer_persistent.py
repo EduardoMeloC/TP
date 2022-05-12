@@ -5,9 +5,10 @@ serverSocket.bind(('',serverPort))
 serverSocket.listen(1)
 print('The server is ready to receive')
 
-connectionSocket, addr = serverSocket.accept()
 while True:
-    sentence = connectionSocket.recv(1024).decode()
-    capitalizedSentence = sentence.upper()
-    connectionSocket.send(capitalizedSentence.encode())
-connectionSocket.close()
+    connectionSocket, addr = serverSocket.accept()
+    while True:
+        sentence = connectionSocket.recv(1024).decode()
+        capitalizedSentence = sentence.upper()
+        connectionSocket.send(capitalizedSentence.encode())
+    connectionSocket.close()
